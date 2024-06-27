@@ -1,7 +1,7 @@
 import customtkinter as ctk
 import re
 import os
-from tkinter import filedialog
+from tkinter import filedialog, messagebox
 
 class DAEFixer(ctk.CTk):
     def __init__(self):
@@ -78,6 +78,9 @@ class DAEFixer(ctk.CTk):
             self.update_idletasks()
         
         self.output_text.insert(ctk.END, f"Processed {total_files} file(s).\n")
+        
+        # Show completion pop-up
+        messagebox.showinfo("Process Complete", f"Successfully processed {total_files} file(s).")
 
     def process_file(self, input_file):
         output_file = os.path.splitext(input_file)[0] + '_output.dae'
